@@ -1,5 +1,5 @@
 # Raspberry AP/Client
-## A simple script utility to easily manage AP mode and Client mode on a Raspberry Pi
+*A simple script utility to easily manage AP mode and Client mode on a Raspberry Pi*
 
 
 The script aims to reduce the time needed to set up a bridged Access Point on a Raspberry Pi and to easily manage its state.
