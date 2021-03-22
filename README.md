@@ -20,9 +20,7 @@ This script is primarily intended to be used as a command line utility, or calle
 
 ## Requirements
 
-The script requires [hostapd](https://wiki.gentoo.org/wiki/Hostapd) to run.    
-**It seems that hostapd configuration is not working properly on systems which uses [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).**  
-**It is strongly recommended to use Raspbian**    
+The script requires [hostapd](https://wiki.gentoo.org/wiki/Hostapd) to run.     
 Install hostapd
 
 ```sh
@@ -34,7 +32,9 @@ To run raspi config:
 
 ```sh
 sudo raspi-config
-```
+```  
+**It seems that hostapd configuration is not working properly on systems which uses [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).**    
+**It is strongly recommended to use Raspbian** 
  
 
 ## Usage
