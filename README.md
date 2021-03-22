@@ -48,7 +48,7 @@ In the script directory:
     ```
     Example
      ```sh
-    sudo ./script.sh --ap setup GB
+    sudo ./script.sh --ap setup_gb
     ```
 * Turn on/off the AP
     ```sh
