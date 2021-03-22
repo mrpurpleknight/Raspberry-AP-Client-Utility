@@ -26,7 +26,7 @@ function ap() {
         systemctl daemon-reload
         systemctl restart dhcpcd
     elif [ "$1" == "setup" ]; then
-        setupAp
+        setupAp $2
     else
         echo "Invalid option: No suitable option"
     fi
@@ -50,14 +50,15 @@ function setupAp() {
 
     #To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command
     rfkill unblock wlan
-
-    printf "country_code=IT\ninterface=wlan0\nbridge=br0\nssid=AccedyBox\nhw_mode=g\nchannel=7\nmacaddr_acl=0\nauth_algs=1\nignore_broadcast_ssid=0\nwpa=2\nwpa_passphrase=AccedyBox!\nwpa_key_mgmt=WPA-PSK\nwpa_pairwise=TKIP\nrsn_pairwise=CCMP\n" >>/etc/hostapd/hostapd.conf
+    code=$1
+    code=${code^^}
+    printf "country_code=$code\ninterface=wlan0\nbridge=br0\nssid=AccedyBox\nhw_mode=g\nchannel=7\nmacaddr_acl=0\nauth_algs=1\nignore_broadcast_ssid=0\nwpa=2\nwpa_passphrase=AccedyBox!\nwpa_key_mgmt=WPA-PSK\nwpa_pairwise=TKIP\nrsn_pairwise=CCMP\n" >>/etc/hostapd/hostapd.conf
 
     echo "Please reboot the system before typing any other command"
 }
 
 if [ "$1" == "--ap" ]; then
-    ap "$2"
+    ap "$2" "$3"
 elif [ "$1" == "--client" ]; then
     client "$2"
 else
