@@ -44,7 +44,11 @@ In the script directory:
 
 * Setup the AP (reboot required)
     ```sh
-    sudo ./script.sh --ap setup
+    sudo ./script.sh --ap setup <your_contry_code>
+    ```
+    Example
+     ```sh
+    sudo ./script.sh --ap setup GB
     ```
 * Turn on/off the AP
     ```sh
