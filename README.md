@@ -13,14 +13,14 @@ Since the Access Point does not allow to use wlan0 interface and so the WiFi, th
 - Manage the state of wlan0 interface
 
 ## Description
-Setting up an AP could be a very time-spending activity, especially for beginnners. 
+Setting up an AP could be a very time-spending activity, especially for beginnners.  
 Also managing the state of the AP and the commutation to client mode could be very confusing with such a big variety of choice. 
 This script is primarily intended to be used as a command line utility, or called via code.
 
 
 ## Requirements
 
-The script requires [hostapd](https://wiki.gentoo.org/wiki/Hostapd) to run.
+The script requires [hostapd](https://wiki.gentoo.org/wiki/Hostapd) to run.  
 
 Install hostapd
 
@@ -28,7 +28,7 @@ Install hostapd
 sudo apt install hostapd
 ```
 
-Finally be sure to configure WLAN Country in raspi-config/Localisation Options
+Finally be sure to configure WLAN Country in raspi-config -> Localisation Options.  
 To run raspi config:
 
 ```sh
@@ -36,7 +36,7 @@ sudo raspi-config
 ```
 
 
-It seems that hostapd configuration is not working properly on systems which uses [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).
+It seems that hostapd configuration is not working properly on systems which uses [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).  
 **It is strongly recommended to use Raspbian**
 
 ## Usage
