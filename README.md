@@ -42,9 +42,9 @@ It seems that hostapd configuration is not working properly on systems which use
 ## Usage
 In the script directory:
 
-* Setup the AP (reboot required)
+* Setup the AP (required for working properly)(reboot required)
     ```sh
-    sudo ./script.sh --ap setup <your_contry_code>
+    sudo ./script.sh --ap setup_<your_contry_code>
     ```
     Example
      ```sh
