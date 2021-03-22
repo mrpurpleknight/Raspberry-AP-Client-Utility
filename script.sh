@@ -26,7 +26,7 @@ function ap() {
         systemctl daemon-reload
         systemctl restart dhcpcd
     elif [[ "$1" == "setup"* ]]; then
-        local country_code = $(echo $1 | cut -d '_' -f 2)
+        local country_code=$(echo $1 | cut -d '_' -f 2)
         setupAp "$country_code"
     else
         echo "Invalid option: No suitable option"
