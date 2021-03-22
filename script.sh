@@ -25,8 +25,9 @@ function ap() {
 
         systemctl daemon-reload
         systemctl restart dhcpcd
-    elif [ "$1" == "setup" ]; then
-        setupAp $2
+    elif [ [ "$1" = "setup"* ] ]; then
+        local country_code = $(echo $1 | cut -d '_' -f 2)
+        setupAp "$country_code"
     else
         echo "Invalid option: No suitable option"
     fi
@@ -58,7 +59,7 @@ function setupAp() {
 }
 
 if [ "$1" == "--ap" ]; then
-    ap "$2" "$3"
+    ap "$2"
 elif [ "$1" == "--client" ]; then
     client "$2"
 else
