@@ -28,6 +28,14 @@ Install hostapd
 sudo apt install hostapd
 ```
 
+Finally be sure to configure WLAN Country in raspi-config/Localisation Options
+To run raspi config:
+
+```sh
+sudo raspi-config
+```
+
+
 It seems that hostapd configuration is not working properly on systems which uses [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).
 **It is strongly recommended to use Raspbian**
 
