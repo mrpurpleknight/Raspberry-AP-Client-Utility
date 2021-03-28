@@ -33,7 +33,7 @@ To run raspi config:
 ```sh
 sudo raspi-config
 ```  
-**It seems that hostapd configuration is not working properly on systems which uses [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).**    
+**It seems that hostapd configuration is not working properly on systems which use [NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager).**    
 **It is strongly recommended to use Raspbian** 
  
 
