@@ -13,6 +13,7 @@ function down() {
 function up() {
     local ssid=$1
     local country_code
+    
     while IFS= read -r line
     do
         country_code="$line"
