@@ -3,8 +3,7 @@
 function down() {
     systemctl stop hostapd
 
-    rm -rf /etc/dhcpcd.conf
-    touch /etc/dhcpcd.conf
+    clearApFiles
 
     systemctl daemon-reload
     systemctl restart dhcpcd
@@ -19,7 +18,6 @@ function up() {
         country_code="$line"
     done < .config.ap
 
-
     writeApFiles "$country_code" "$ssid"
 
     systemctl daemon-reload
@@ -32,16 +30,17 @@ function setup() {
     setupAp "$country_code"
 }
 
-function writeApFiles() {
+function clearApFiles() {
     rm -rf /etc/hostapd/hostapd.conf
+
+    rm -rf /etc/dhcpcd.conf
+    touch /etc/dhcpcd.conf
+
+}
+
+function writeApFiles() {
     local country_code=$1;
     local ssid=$2;
-
-    #Add a bridge network device named br0
-    printf "[NetDev]\nName=br0\nKind=bridge" >>/etc/systemd/network/bridge-br0.netdev
-
-    #In order to bridge the Ethernet network with the wireless network, first add the built-in Ethernet interface (eth0) as a bridge member
-    printf "[Match]\nName=eth0\n\n[Network]\nBridge=br0" >>/etc/systemd/network/br0-member-eth0.network
 
     #dhcpcd, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface.
     #So we need to block the eth0 and wlan0 interfaces from being processed, and let dhcpcd configure only br0 via DHCP
@@ -63,6 +62,12 @@ function setupAp() {
     #To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command
     rfkill unblock wlan
     
+    #Add a bridge network device named br0
+    printf "[NetDev]\nName=br0\nKind=bridge" >>/etc/systemd/network/bridge-br0.netdev
+
+    #In order to bridge the Ethernet network with the wireless network, first add the built-in Ethernet interface (eth0) as a bridge member
+    printf "[Match]\nName=eth0\n\n[Network]\nBridge=br0" >>/etc/systemd/network/br0-member-eth0.network
+
     writeApFiles "$country_code" "FirstSetup"
 
     echo "Please reboot the system before typing any other command"
