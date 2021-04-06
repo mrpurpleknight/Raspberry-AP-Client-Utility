@@ -19,6 +19,7 @@ function up() {
         country_code="$line"
     done < .config.ap
 
+
     writeApFiles "$country_code" "$ssid"
 
     systemctl daemon-reload
@@ -32,6 +33,7 @@ function setup() {
 }
 
 function writeApFiles() {
+    rm -rf /etc/hostapd/hostapd.conf
     local country_code=$1;
     local ssid=$2;
 
@@ -51,7 +53,7 @@ function writeApFiles() {
 function setupAp() {
     local country_code=$1
     country_code=${country_code^^}
-    echo country_code >> .config.ap
+    echo "$country_code" >> .config.ap
 
     systemctl unmask hostapd
 
