@@ -2,12 +2,12 @@
 
 function down() {
     systemctl stop hostapd
-    systemctl stop dhcpcd
 
     rm -rf /etc/dhcpcd.conf
     touch /etc/dhcpcd.conf
 
     systemctl daemon-reload
+    systemctl restart dhcpcd
 }
 
 function up() {

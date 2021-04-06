@@ -1,7 +1,6 @@
 #!/bin/bash
 
 function up() {
-    systemctl restart dhcpcd
     ifconfig wlan0 up
 }
 
