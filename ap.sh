@@ -61,7 +61,7 @@ function setupAp() {
     #To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command
     rfkill unblock wlan
     
-    writeApFiles "$country_code" "AccedyBox"
+    writeApFiles "$country_code" "FirstSetup"
 
     echo "Please reboot the system before typing any other command"
 }
