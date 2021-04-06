@@ -13,7 +13,7 @@ function down() {
 function up() {
     local ssid=$1
     local country_code
-    
+
     while IFS= read -r line
     do
         country_code="$line"
@@ -67,7 +67,7 @@ function setupAp() {
 }
 
 if [ -z "$2" ]; then
-    if [ "$1" == "down"]; then
+    if [ "$1" == "down" ]; then
         down
     else
         echo "Invalid option: $1 is not a recognized command"
