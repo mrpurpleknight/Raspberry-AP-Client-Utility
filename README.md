@@ -42,23 +42,26 @@ In the script directory:
 
 * Setup the AP (required for working properly)**(reboot required)**
     ```sh
-    sudo ./script.sh --ap setup_<your_contry_code>
+    sudo ./ap.sh setup <your_contry_code>
     ```
     Example
      ```sh
-    sudo ./script.sh --ap setup_gb
+    sudo ./ap.sh setup setup gb
     ```
 * Turn on/off the AP
     ```sh
-    sudo ./script.sh --ap up
+    sudo ./ap.sh up <ssid>
     ```
     ```sh
-    sudo ./script.sh --ap down
+    sudo ./ap.sh down
     ```
+    **To correctly execute any other command, you have to manually turn off the AP, if on.**
+    **This is also appliable if the Raspberry shutdown unexpectedly when AP is on**
+    
 * Turn on/off WiFi connection in client mode
     ```sh
-    sudo ./script.sh --client up
+    sudo ./client.sh up
     ```
     ```sh
-    sudo ./script.sh --client down
+    sudo ./client.sh down
     ```
