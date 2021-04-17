@@ -18,6 +18,7 @@ function up() {
         country_code="$line"
     done < .config.ap
 
+    clearApFiles
     writeApFiles "$country_code" "$ssid"
 
     systemctl daemon-reload
