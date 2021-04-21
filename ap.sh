@@ -41,6 +41,8 @@ function setup() {
 
 function clearApFiles() {
     rm -rf /etc/hostapd/hostapd.conf
+    rm -rf /etc/systemd/network/bridge-br0.netdev
+    rm -rf /etc/systemd/network/br0-member-eth0.network
 
     rm -rf /etc/dhcpcd.conf
     touch /etc/dhcpcd.conf
@@ -55,6 +57,7 @@ function writeApFiles() {
     #dhcpcd, the DHCP client on the Raspberry Pi, automatically requests an IP address for every active interface.
     #So we need to block the eth0 and wlan0 interfaces from being processed, and let dhcpcd configure only br0 via DHCP
     printf "denyinterfaces wlan0 eth0\ninterface br0" >/etc/dhcpcd.conf
+    chmod +x /etc/dhcpcd.conf
 
     printf "country_code=$country_code\ninterface=wlan0\nbridge=br0\nssid=$ssid\nhw_mode=g\nchannel=7\nmacaddr_acl=0\nauth_algs=1\nignore_broadcast_ssid=0\nwpa=2\nwpa_passphrase=AccedyBox!\nwpa_key_mgmt=WPA-PSK\nwpa_pairwise=TKIP\nrsn_pairwise=CCMP\n" >/etc/hostapd/hostapd.conf
 }
