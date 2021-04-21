@@ -4,6 +4,9 @@ function down() {
     systemctl disable systemd-networkd  
     systemctl stop systemd-networkd
     
+    systemctl daemon-reload
+    systemctl reset-failed
+
     systemctl stop hostapd
     systemctl stop dhcpcd
 
@@ -18,7 +21,7 @@ function up() {
     local country_code
 
     systemctl enable systemd-networkd
-    systemctl start systemd-networkd
+    systemctl reload systemd-networkd
     
     systemctl stop dhcpcd
 
