@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function down() {
-    systemctl stop systemd-networkd
     systemctl disable systemd-networkd
-
+    systemctl stop systemd-networkd
+    
     systemctl stop hostapd
     systemctl stop dhcpcd
 
@@ -17,9 +17,9 @@ function up() {
     local ssid=$1
     local country_code
 
-    systemctl start systemd-networkd
     systemctl enable systemd-networkd
-
+    systemctl start systemd-networkd
+    
     systemctl stop dhcpcd
 
     while IFS= read -r line
