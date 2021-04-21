@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function down() {
-    systemctl disable systemd-networkd
+    systemctl disable systemd-networkd  
     systemctl stop systemd-networkd
     
     systemctl stop hostapd
