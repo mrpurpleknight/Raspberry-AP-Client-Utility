@@ -16,7 +16,7 @@ function up() {
     while IFS= read -r line
     do
         country_code="$line"
-    done < .config.ap
+    done < $HOME/.config.ap
 
     writeApFiles "$country_code" "$ssid"
 
@@ -52,12 +52,12 @@ function writeApFiles() {
 function setupAp() {
     local country_code=$1
     country_code=${country_code^^}
-    echo "$country_code" >> .config.ap
+    echo "$country_code" > $HOME/.config.ap
 
     systemctl unmask hostapd
 
     #Now enable the systemd-networkd service to create and populate the bridge when your Raspberry Pi boots
-    sudo systemctl enable systemd-networkd
+    systemctl enable systemd-networkd
 
     #To ensure WiFi radio is not blocked on your Raspberry Pi, execute the following command
     rfkill unblock wlan
