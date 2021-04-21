@@ -35,6 +35,7 @@ function clearApFiles() {
 
     rm -rf /etc/dhcpcd.conf
     touch /etc/dhcpcd.conf
+    chmod +x /etc/dhcpcd.conf
 
 }
 
