@@ -1,15 +1,10 @@
 #!/bin/bash
 
 function down() {
-
     ip link set down br0
     ip link del dev br0
-    systemctl restart systemd-networkd
- 
-    systemctl stop systemd-networkd
-    systemctl disable systemd-networkd 
-    
-    systemctl daemon-reload
+
+   systemctl daemon-reload
     systemctl reset-failed
 
     systemctl stop hostapd
@@ -17,6 +12,11 @@ function down() {
 
     clearApFiles
 
+    systemctl restart systemd-networkd
+     systemctl stop systemd-networkd
+    systemctl disable systemd-networkd
+    systemctl stop systemd-networkd.socket 
+    
     systemctl daemon-reload
     systemctl restart dhcpcd
 }
