@@ -30,7 +30,7 @@ function up() {
     while IFS= read -r line
     do
         country_code="$line"
-    done < $HOME/.config.ap
+    done < "$HOME/.config.ap"
 
     writeApFiles "$country_code" "$ssid"
 
@@ -79,7 +79,7 @@ function writeApFiles() {
 function setupAp() {
     local country_code=$1
     country_code=${country_code^^}
-    echo "$country_code" > $HOME/.config.ap
+    echo "$country_code" > "$HOME/.config.ap"
 
     systemctl unmask hostapd
 
