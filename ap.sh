@@ -24,9 +24,6 @@ function down() {
 function up() {
     local ssid=$1
     local country_code
-
-    systemctl enable systemd-networkd
-    systemctl restart systemd-networkd
     
     systemctl stop dhcpcd
 
@@ -36,6 +33,9 @@ function up() {
     done < $HOME/.config.ap
 
     writeApFiles "$country_code" "$ssid"
+
+    systemctl enable systemd-networkd
+    systemctl restart systemd-networkd
 
     systemctl daemon-reload
     systemctl restart dhcpcd
