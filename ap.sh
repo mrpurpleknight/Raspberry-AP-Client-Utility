@@ -92,6 +92,7 @@ function setupAp() {
     writeApFiles "$country_code" "FirstSetup"
 
     echo "Please reboot the system before typing any other command"
+    echo "At first reboot the Access Point will be on under the name of FirstSetup and you need to manually turn off it!"
 }
 
 if [ -z "$2" ]; then
