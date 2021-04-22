@@ -3,19 +3,19 @@
 function down() {
     ip link set down br0
     ip link del dev br0
-
-   systemctl daemon-reload
-    systemctl reset-failed
-
+   
     systemctl stop hostapd
     systemctl stop dhcpcd
 
     clearApFiles
 
     systemctl restart systemd-networkd
-     systemctl stop systemd-networkd
+
     systemctl disable systemd-networkd
     systemctl stop systemd-networkd.socket 
+    systemctl stop systemd-networkd
+    systemctl reset-failed
+    
     
     systemctl daemon-reload
     systemctl restart dhcpcd
