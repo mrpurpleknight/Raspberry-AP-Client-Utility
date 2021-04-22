@@ -1,8 +1,13 @@
 #!/bin/bash
 
 function down() {
-    systemctl disable systemd-networkd  
+
+    ip link set down br0
+    ip link del dev br0
+    systemctl restart systemd-networkd
+ 
     systemctl stop systemd-networkd
+    systemctl disable systemd-networkd 
     
     systemctl daemon-reload
     systemctl reset-failed
@@ -21,7 +26,7 @@ function up() {
     local country_code
 
     systemctl enable systemd-networkd
-    systemctl reload systemd-networkd
+    systemctl restart systemd-networkd
     
     systemctl stop dhcpcd
 
