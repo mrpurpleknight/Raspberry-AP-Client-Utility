@@ -17,7 +17,6 @@ function down() {
     systemctl reset-failed
     
     systemctl restart systemd-resolved
-    networkctl reload
     systemctl daemon-reload
     systemctl restart dhcpcd
 }
